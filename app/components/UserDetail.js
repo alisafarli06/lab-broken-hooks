@@ -17,14 +17,27 @@ export default function UserDetail({ userId }) {
       setPosts(data);
       setLoading(false);
     });
-  }, [userId, posts]);
+  }, [userId]);
 
   if (userId == null) {
     return <p className={styles.placeholder}>Select a user to see their posts.</p>;
   }
 
   if (loading) {
-    return <p className={styles.placeholder}>Loading posts...</p>;
+    return (
+      <div className={styles.panel} aria-busy="true" aria-label="Loading posts">
+        <div className={`${styles.skeleton} ${styles.skeletonHeading}`} />
+        <ul className={styles.skeletonList}>
+          {[0, 1, 2].map((item) => (
+            <li key={item} className={styles.skeletonPost}>
+              <div className={`${styles.skeleton} ${styles.skeletonTitle}`} />
+              <div className={`${styles.skeleton} ${styles.skeletonBody}`} />
+              <div className={`${styles.skeleton} ${styles.skeletonBodyShort}`} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
   }
 
   return (

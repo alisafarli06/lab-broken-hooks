@@ -45,6 +45,62 @@
   line-height: 1.5;
 }
 
+.skeleton {
+  border-radius: 6px;
+  background: linear-gradient(90deg, #eee 25%, #f5f5f5 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonHeading {
+  width: 96px;
+  height: 24px;
+  margin-bottom: 16px;
+}
+
+.skeletonList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.skeletonPost {
+  border-top: 1px solid #eee;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeletonTitle {
+  width: 72%;
+  height: 16px;
+}
+
+.skeletonBody,
+.skeletonBodyShort {
+  height: 12px;
+}
+
+.skeletonBody {
+  width: 100%;
+}
+
+.skeletonBodyShort {
+  width: 84%;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 @media (prefers-color-scheme: dark) {
   .panel {
     background-color: #111;
@@ -62,5 +118,14 @@
 
   .postBody {
     color: #aaa;
+  }
+
+  .skeleton {
+    background: linear-gradient(90deg, #222 25%, #2a2a2a 50%, #222 75%);
+    background-size: 200% 100%;
+  }
+
+  .skeletonPost {
+    border-color: #262626;
   }
 }
